@@ -1,12 +1,8 @@
-# importing window from pyspark.sql.window
 from pyspark.sql.window import Window
 
-# importing aggregate functions
-# from pyspark.sql.functions
 from pyspark.sql.functions import col,avg,sum,min,max,row_number 
 spark = SparkSession.builder.appName("pyspark_window").getOrCreate()
 
-# sample data for dataframe
 sampleData = (("Ram", 28, "Sales", 3000),
               ("Meena", 33, "Sales", 4600),
               ("Robin", 40, "Sales", 4100),
@@ -30,12 +26,9 @@ df = spark.createDataFrame(data=sampleData,
 windowPartitionAgg = Window.partitionBy("Department").orderBy("Age")
 # print schema
 df.printSchema()
-# show df
 df.show()
 
 # applying window aggregate function
-# to df3 with the help of withColumn
-
 # this is average()
 df3.withColumn("Avg", 
                avg(col("salary")).over(windowPartitionAgg))
