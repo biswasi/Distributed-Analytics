@@ -24,7 +24,7 @@ df.printSchema()
 employee_data = [("1","John",28,5000),
                  ("2","Smith",30,6000),
                  ("3","Adam",35,4000),
-                 ("4","Henry",40,7000)]
+                 ("4","Hina",40,7000)]
 
 employee_rdd = spark.createDataFrame(employee_data, ["ID", "Name", "Age", "Salary"])
 print("Creating Employee DataFrame ")
@@ -34,13 +34,9 @@ filtered_rdd = employee_rdd.filter(employee_rdd.Salary > 3000)
 print(filtered_rdd.collect())
 
 dataRDD = [("Assignment", 1),	
-
   ("Ruderford", 1),	
-
   ("Manik", 1),	
-
   ("Travelling", 1)]
-
 rdd1 = spark.sparkContext.parallelize(dataRDD)	
 rdd2 = rdd1.reduceByKey(lambda a,b :a+b)
 for element in rdd2.collect():
